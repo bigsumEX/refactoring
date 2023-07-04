@@ -11,17 +11,14 @@ class PurchasePointPayment {
         }   
         customerId = customer.id;
         if (comic.isEnabled()) {
-            comicId = comic.id;
-            if (comic.currentPurchasePoint.amount <= customer.possessionPoint.amount) {
-                consumptionPoint = comic.currentPurchasePoint;
-                paymentDateTime = LocalDateTime.now();
-            }
-            else {
-                throw new RuntimeException("所持ポイントが不足しています。");
-            }
-        }
-        else {
             throw new IllegalArgumentException("現在取り扱いのできないコミックです。");
         }
+        customerId = customer.id;
+        if (comic.currentPurchasePoint.amount <= customer.possessionPoint.amount) {
+            throw new RuntimeException("所持ポイントが不足しています。");
+        }
+        consumptionPoint = comic.currentPurchasePoint;
+        paymentDateTime = LocalDateTime.now();
     }
 }
+
