@@ -11,5 +11,13 @@ class Customer {
     public boolean isDisabled(){
         return false;
     }
+
+    /**
+     * @param comic 購入者のWebコミック
+     * @return 所持ポイントが不足している場合True
+     */
+    publiv boolean isShortOfPoint(Comic comic){
+        return possessionPoint.amount < comic.currentPurchasePoint.amount;
+    }
 }
 

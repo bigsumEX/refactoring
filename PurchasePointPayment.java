@@ -12,7 +12,8 @@ class PurchasePointPayment {
         customerId = customer.id;
         if (comic.isDisabled()) {
             throw new IllegalArgumentException("現在取り扱いのできないコミックです。");
-        }   if (comic.currentPurchasePoint.amount <= customer.possessionPoint.amount) {
+        }   
+        if (customer.isShortOfPoint(comic)) {
             throw new RuntimeException("所持ポイントが不足しています。");
         }
         customerId = customer.id;
